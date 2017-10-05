@@ -1,0 +1,45 @@
+{% extends 'crunchy/base.html' %}
+{% block title %}Hotels{% endblock %}
+
+{% block content %}
+    <h1>HOTEL PAGE</h1>
+    <div class="panel panel-default">
+         <div class="panel-body">
+            <div class="row">
+                <!-- Begin first column. -->
+                <div class="col-md-8">
+                    <a href="#" class="thumbnail">
+                        <img class="media-object" src="{{ hotel.img1 }}" alt="hotel image">
+                    </a>
+                </div><!-- End first column. -->
+
+                <!-- Begin second column. -->
+                <div class="col-md-4">
+                    This is where we should should say a map of the place or something
+                    {{ hotel.city }}
+                </div><!-- End second column. -->
+            </div>
+
+             <div class="row">
+                <!-- Begin first column. -->
+                <div class="col-md-8">
+                    Description of the hotel will go here...
+                    <h3 class="media-heading">{{ hotel.name }}</h3>
+                    <p>{{ hotel.city }}</p>
+                    <h4 class="pull-right">${{ hotel.price }}</h4>
+                    <button class="btn btn-default">Book it</button>
+                </div><!-- End first column. -->
+
+                <!-- Begin second column. -->
+                <div class="col-md-4">
+                </div><!-- End second column. -->
+            </div>
+         </div>
+    </div>
+{#    <div class="panel panel-default">#}
+{#        <div class="panel-body">#}
+{#        Basic panel example#}
+{#        </div>#}
+{#    </div>#}
+{#    {{ hotel.pk }}#}
+{% endblock %}

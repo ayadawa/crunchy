@@ -1,0 +1,28 @@
+{% extends 'crunchy/base.html' %}
+{% block title %}Hotels{% endblock %}
+
+{% block content %}
+    <h1>HOTELS PAGE</h1>
+    {% for hotel in hotels %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                            <img class="media-object" src="{{ hotel.img1 }}" alt="hotel image" width="200" height="200">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">{{ hotel.name }}</h3>
+                        <p>{{ hotel.city }}</p>
+                        <h4 class="pull-right">${{ hotel.price }}</h4>
+                    </div>
+                </div>
+            </div>
+
+{#            <div class="panel-footer clearfix">#}
+{#                <h4 class="pull-right">${{ hotel.price }}</h4>#}
+{#            </div>#}
+        </div>
+    {% endfor %}
+{% endblock %}
