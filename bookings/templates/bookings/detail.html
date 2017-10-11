@@ -1,0 +1,12 @@
+{% extends 'crunchy/base.html' %}
+
+{% block title %}Detail Page For Reservation{% endblock %}
+
+{% block content %}
+    {% for x in user.user_id %}
+        <h1>{{ user.name }}</h1>
+        <h1>{{ user.user_id }}</h1>
+        <h1>{{ booking.start_time }}</h1>
+        <h1>{{ booking.end_time }}</h1>
+    {% endfor %}
+{% endblock %}

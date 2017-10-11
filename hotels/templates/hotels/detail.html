@@ -8,9 +8,11 @@
             <div class="row">
                 <!-- Begin first column. -->
                 <div class="col-md-8">
-                    <a href="#" class="thumbnail">
-                        <img class="media-object" src="{{ hotel.img1 }}" alt="hotel image">
-                    </a>
+                    {% for image in hotel.images_as_list %}
+                        <a href="#" class="thumbnail">
+                            <img class="media-object" src="{{ image }}" alt="hotel image">
+                        </a>
+                    {% endfor %}
                 </div><!-- End first column. -->
 
                 <!-- Begin second column. -->
