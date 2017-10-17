@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'accounts',
     'hotels',
     'bookings',
+    'crunchy_home',
 ]
 
 MIDDLEWARE = [
