@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'payments',
+    'hotels',
+    'bookings',
+    'crunchy_home',
 ]
 
 MIDDLEWARE = [
