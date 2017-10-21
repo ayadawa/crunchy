@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
+
+	url(r'^payments/', include('payments.urls')),
     url(r'', include('crunchy_home.urls')),
     url(r'^bookings/', include('bookings.urls')),
     url(r'^hotels/', include('hotels.urls')),
