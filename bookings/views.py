@@ -26,7 +26,6 @@ def create(request, hotel_id):
     if request.user.is_authenticated:
         if request.method == "POST":
             form = CreateBookingForm(request.POST)
-            print(form.errors)
             if form.is_valid():
                 hotel = Hotel.objects.get(pk=hotel_id)
                 booking = form.save(commit=False)
