@@ -2,3 +2,5 @@
 .DS_Store
 # Ignore pycharm preferences
 .idea/
+# Ignore pycache
+__pycache__
