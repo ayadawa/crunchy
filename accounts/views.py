@@ -15,7 +15,11 @@ def register_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
+
                 return render(request, 'accounts/profile.html', {'user_id': user.pk})
+
+                return render(request, 'crunchy_home/index.html', {'user_id': user.pk})
+
     context = {
         'form': form,
     }
@@ -30,7 +34,11 @@ def login_user(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
+
                 return render(request, 'accounts/profile.html', {'user_id': user.pk})
+
+                return render(request, 'crunchy_home/index.html', {'user_id': user.pk})
+
             else:
                 return render(request, 'accounts/login.html', {'error_message': 'Your account has been disabled'})
         else:

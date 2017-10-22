@@ -7,6 +7,9 @@ urlpatterns = [
     url(r'^(?P<booking_id>[0-9]+)/$', views.detail, name='detail'),
     # ex. bookings/create/500
     url(r'^create/(?P<hotel_id>[0-9]+)/$', views.create, name='create'),
+
     # ex. bookings/view
     url(r'^(?P<booking_id>[0-9]+)/$', views.detail, name='view'),
+
+
 ]

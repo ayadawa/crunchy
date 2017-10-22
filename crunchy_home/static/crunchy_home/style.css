@@ -1,0 +1,44 @@
+.jumbotron {
+    background: white url("images/ggb.jpg") no-repeat;
+    min-width: 100%;
+    min-height: 100vh;
+    margin: auto;
+    background-size: cover;
+    padding: 200px;
+}
+
+.bg-1 {
+    padding: 60px;
+}
+
+.parent {
+  position: relative;
+}
+
+.popup {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background: black;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  transition: .5s ease;
+  text-align: center;
+  padding-top: 5cm;
+}
+
+.parent:hover .popup {
+  visibility: visible;
+  opacity: 1;
+  height: 100%;
+}
+
+.bg-2 {
+    color: dodgerblue;
+    padding: 60px;
+}
+

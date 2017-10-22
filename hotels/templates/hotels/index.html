@@ -2,6 +2,9 @@
 {% block title %}Hotels{% endblock %}
 
 {% block content %}
+
+    <div class = "container-fluid">
+
     <h1>HOTELS PAGE</h1>
     {% for hotel in hotels %}
         <div class="panel panel-default">
@@ -32,4 +35,7 @@
             </div>
         </div>
     {% endfor %}
+
+    </div>
+
 {% endblock %}

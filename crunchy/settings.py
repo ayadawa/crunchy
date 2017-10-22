@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'payments',
     'hotels',
     'bookings',
+
     'viewer',
+
     'crunchy_home',
 ]
 

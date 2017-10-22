@@ -11,10 +11,16 @@ class CreateBookingForm(ModelForm):
 
     class Meta:
         model = Booking
-        fields = ['start_date', 'end_date', 'start_time', 'end_time']
+
+        fields = ['check_in_date', 'check_out_date']
+        labels = {
+            'check_in_date': "Check in",
+            'check_out_date': "Check out",
+        }
         widgets = {
-            'start_date': DateInput(),
-            'end_date': DateInput(),
+            'check_in_date': DateInput(),
+            'check_out_date': DateInput(),
+
         }
 
 
