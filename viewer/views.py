@@ -7,3 +7,10 @@ def reservations(request):
 
     return render(request, 'viewer/reservations.html')
 
+def previous(request):
+    return render(request, 'viewer/previous.html')
+
+
+def upcoming(request):
+    return render(request, 'viewer/upcoming.html')
+

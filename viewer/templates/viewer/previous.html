@@ -4,11 +4,26 @@
 {% block content %}
 
     <div class="text-center">
-    <ul class="nav nav-pills nav-stacked ">
-  <li class="active"><a href="#">View Upcoming/Previous Reservations Here</a></li>
-  <li><a href="#">Previous Reservations</a></li>
-  <li><a href="#">Upcoming Reservations </a></li>
-</ul>
+        <ul class="nav nav-pills nav-stacked ">
+            <li class="active"><a href="#">View Upcoming/Previous Reservations Here</a></li>
+            <li><a href="{% url 'viewer:previous' %}">Previous Reservations</a></li>
+            <li><a href="{% url 'viewer:upcoming' %}">Upcoming Reservations</a></li>
+            <div class="content container">
+                <div class="row">
+                    <style>
+                        div.relative {
+                            position: center;
+
+                            border: 3px solid #769db7;
+                        }
+                    </style>
+                    <div class="relative">
+                        <b>   No Previous Reservations Have Been Made </b>
+                    </div>
+                </div>
+            </div>
+
+        </ul>
     </div>
 
 
