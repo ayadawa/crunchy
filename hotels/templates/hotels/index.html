@@ -1,0 +1,35 @@
+{% extends 'crunchy/base.html' %}
+{% block title %}Hotels{% endblock %}
+
+{% block content %}
+    <h1>HOTELS PAGE</h1>
+    {% for hotel in hotels %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        {% for image in hotel.images_as_list %}
+                            <a href="#">
+                                <img class="media-object" src="{{ image }}" alt="hotel image" width="200" height="200">
+                            </a>
+                        {% endfor %}
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">{{ hotel.name }}</h3>
+                        <p>{{ hotel.address }}</p>
+                        <h4 class="pull-right">${{ hotel.price }}</h4>
+
+                        <form class="form-horizontal" role="form" action="{% url 'hotels:detail' hotel.id %}" method="GET" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success">More Details</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

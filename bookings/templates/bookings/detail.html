@@ -1,0 +1,43 @@
+{% extends 'crunchy/base.html' %}
+
+{% block title %}Detail Page For Reservation{% endblock %}
+
+{% block content %}
+    <div class="panel panel-default">
+         <div class="panel-body">
+            <div class="row">
+                <!-- Begin first column. -->
+                <div class="col-md-5">
+                    {% for image in hotel.images_as_list %}
+                        <a href="#" class="thumbnail">
+                            <img class="media-object" src="{{ image }}" alt="hotel image">
+                        </a>
+                    {% endfor %}
+                </div><!-- End first column. -->
+
+                <!-- Begin second column. -->
+                <div class="col-md-7">
+                    <h3 class="media-heading">{{ hotel.name }}</h3>
+                    Description of the hotel will go here...
+                    <p>{{ hotel.city }}</p>
+                    <h4 class="pull-right">${{ hotel.price }}</h4>
+
+
+                    <h1>Hotel reserved from: </h1>
+                    <h1>{{ booking.start_date }}</h1>
+                    <h1>{{ booking.end_date }}</h1>
+
+                    <form class="form-horizontal" role="form" action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div><!-- End second column. -->
+            </div>
+         </div>
+    </div>
+{% endblock %}
