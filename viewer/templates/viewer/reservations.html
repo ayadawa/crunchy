@@ -3,15 +3,14 @@
 
 {% block content %}
 
+    <div class = "container">
     <div class="text-center">
-
-
-
         <ul class="nav nav-pills nav-stacked ">
             <li class="active"><a href="#">View Upcoming/Previous Reservations Here</a></li>
             <li><a href="{% url 'viewer:previous' %}">Previous Reservations</a></li>
             <li><a href="{% url 'viewer:upcoming' %}">Upcoming Reservations </a></li>
         </ul>
+    </div>
     </div>
 
 
