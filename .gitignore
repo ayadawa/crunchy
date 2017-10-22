@@ -3,4 +3,4 @@
 # Ignore pycharm preferences
 .idea/
 # Ignore pycache
-__pycache__
+__pycache__/
