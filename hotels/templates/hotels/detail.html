@@ -2,52 +2,7 @@
 {% block title %}Hotels{% endblock %}
 
 {% block content %}
-
-    <h1>HOTEL PAGE</h1>
-    <div class="panel panel-default">
-         <div class="panel-body">
-            <div class="row">
-                <!-- Begin first column. -->
-                <div class="col-md-8">
-                    {% for image in hotel.images_as_list %}
-                        <a href="#" class="thumbnail">
-                            <img class="media-object" src="{{ image }}" alt="hotel image">
-                        </a>
-                    {% endfor %}
-                </div><!-- End first column. -->
-
-                <!-- Begin second column. -->
-                <div class="col-md-4">
-                    This is where we should should say a map of the place or something
-                    {% if error_message %}
-                        <p><strong>{{ error_message }}</strong></p>
-                    {% endif %}
-                    {{ hotel.city }}
-
-                    <form role="form" action="{% url 'bookings:create' hotel.id %}" method="POST">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit" class="btn btn-success">Reserve</button>
-                    </form>
-                </div><!-- End second column. -->
-            </div>
-
-             <div class="row">
-                <!-- Begin first column. -->
-                <div class="col-md-8">
-                    Description of the hotel will go here...
-                    <h3 class="media-heading">{{ hotel.name }}</h3>
-                    <p>{{ hotel.city }}</p>
-                    <h4 class="pull-right">${{ hotel.price }}</h4>
-
-                </div><!-- End first column. -->
-
-                <!-- Begin second column. -->
-                <div class="col-md-4">
-                </div><!-- End second column. -->
-            </div>
-         </div>
-
+    <div class="container">
     <div class="row">
         <div class="col-md-1">
         </div>
