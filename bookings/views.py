@@ -47,7 +47,7 @@ def create(request, hotel_id):
             return Http404()
     else:
         return redirect('/accounts/login')
-
+# delete reservation
 def delete(request, booking_id):
    if request.method == "POST":
        booking = Booking.objects.get(pk=booking_id)
