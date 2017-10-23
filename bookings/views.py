@@ -27,17 +27,13 @@ def create(request, hotel_id):
         if request.method == "POST":
             form = CreateBookingForm(request.POST)
 
-            print(form.errors)
-
             if form.is_valid():
                 hotel = Hotel.objects.get(pk=hotel_id)
                 booking = form.save(commit=False)
                 booking.hotel = hotel
                 booking.user = request.user
-                booking.start_date = form.cleaned_data['start_date']
-                booking.end_date = form.cleaned_data['end_date']
-                booking.start_time = form.cleaned_data['start_time']
-                booking.end_time = form.cleaned_data['end_time']
+                booking.start_time = form.cleaned_data['check_in_date']
+                booking.end_time = form.cleaned_data['check_out_date']
                 booking.save()
                 url_path = '/bookings/%s' % booking.id
                 return redirect(url_path)

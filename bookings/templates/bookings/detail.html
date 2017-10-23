@@ -24,8 +24,8 @@
 
 
                     <h1>Hotel reserved from: </h1>
-                    <h1>{{ booking.start_date }}</h1>
-                    <h1>{{ booking.end_date }}</h1>
+                    <h1>{{ booking.check_in_date }}</h1>
+                    <h1>{{ booking.check_out_date }}</h1>
 
                     <form class="form-horizontal" role="form" action="delete/" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
