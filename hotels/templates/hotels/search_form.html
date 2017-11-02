@@ -34,7 +34,19 @@
 </br>
 <form class="form-horizontal" role="form" action="{% url 'hotels:search' %}" method="GET" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.rating }}
-    </br>
-    <button type="submit" class="btn btn-default">Submit</button>
+        <ul class="ratings">
+            <li id="rat_1"><label for="rating_1" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_1" value="1"/></li>
+            <li id="rat_2"><label for="rating_2" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_2" value="2"/></li>
+            <li id="rat_3"><label for="rating_3" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_3" value="3"/></li>
+            <li id="rat_4"><label for="rating_4" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_4" value="4"/></li>
+            <li id="rat_5"><label for="rating_5" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_5" value="5"/></li>
+            {{ form.rating.as_hidden }}
+        </ul>
+        </br>
+        <button type="submit" class="btn btn-default">Submit</button>
 </form>
+
+
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
+<script type="text/javascript" src="{% static 'hotels/styles.js' %}" ></script>

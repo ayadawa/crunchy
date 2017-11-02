@@ -1,0 +1,25 @@
+ul.ratings {
+    padding: 0;
+    margin: 0;
+}
+
+ul.ratings li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0px;
+    color: white;
+    text-shadow: 2px 2px 7px grey;
+    font-size: 25px; !important;
+}
+
+ul.ratings li:hover {
+    color: yellow;
+}
+
+ul.ratings li.active, ul.ratings li.activeHover {
+    color: yellow;
+}
+
+ul.ratings li input[type="radio"] {
+    display: none;
+}
