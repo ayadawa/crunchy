@@ -43,10 +43,13 @@ def create(request, hotel_id):
             return Http404()
     else:
         return redirect('/accounts/login')
+
+
 # delete reservation
 def delete(request, booking_id):
-   if request.method == "POST":
-       booking = Booking.objects.get(pk=booking_id)
-       Booking.objects.filter(id=booking_id).delete()
-       url_path = '/viewer/%s' % booking.hotel_id
-       return redirect(url_path)
+    if request.method == "POST":
+        booking = Booking.objects.get(pk=booking_id)
+        Booking.objects.filter(id=booking_id).delete()
+        url_path = '/viewer/%s' % booking.hotel_id
+        return redirect(url_path)
+

@@ -1,0 +1,40 @@
+<form class="form-inline" action="/action_page.php">
+
+    <div class="form-group">
+        <div class="form">
+            <label for="location">Location:</label>
+        <input type="location" class="form-control" id="location" placeholder="Enter location" size="12" name="email">
+        </div></br>
+
+        <div class="form-group">
+        <label for="pwd">Hotel Name:</label>
+        <input type="name" class="form-control" size="12" id="pwd" placeholder="Enter name" name="pwd">
+        </div></br></br>
+
+
+        <label><input type="checkbox" name="topdeals"> Show only Top Deals</label></br>
+        <label><input type="checkbox" name="topdeals"> Show only avaliable</label></br></br>
+
+        <label> Ratings</label></br>
+        <div class="ratings">
+        <span><input type="radio" name="rating" id="str5" value="5"><label for="str5"></label></span>
+        <span><input type="radio" name="rating" id="str4" value="4"><label for="str4"></label></span>
+        <span><input type="radio" name="rating" id="str3" value="3"><label for="str3"></label></span>
+        <span><input type="radio" name="rating" id="str2" value="2"><label for="str2"></label></span>
+        <span><input type="radio" name="rating" id="str1" value="1"><label for="str1"></label></span>
+        </div></br>
+
+        <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+</form>
+
+</br>
+</br>
+</br>
+</br>
+<form class="form-horizontal" role="form" action="{% url 'hotels:search' %}" method="GET" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.rating }}
+    </br>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>

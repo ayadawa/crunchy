@@ -11,6 +11,4 @@ urlpatterns = [
     url(r'^(?P<booking_id>[0-9]+)/delete/$', views.delete, name='delete'),
     # ex. bookings/view
     url(r'^(?P<booking_id>[0-9]+)/$', views.detail, name='view'),
-
-
 ]
