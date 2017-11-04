@@ -17,3 +17,4 @@ class Hotel(models.Model):
     def images_as_list(self):
         return self.images.split(' ')
 
+ 

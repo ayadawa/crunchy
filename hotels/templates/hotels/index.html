@@ -2,81 +2,81 @@
 {% block title %}Hotels{% endblock %}
 
 {% block content %}
- <div class = "container-fluid">
+<div class = "container-fluid">
 
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class = "container-fluid">
-     <form class="form-inline">
-      <div class="input-group">
-        <input type="search" class="form-control" align= "center" size="100" placeholder="Find Hotel" required>
-        <div class="input-group-btn">
-          <button type="button" class="btn btn-danger">Search</button>
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class = "container-fluid">
+       <form class="form-inline">
+        <div class="input-group">
+          <input type="search" class="form-control" align= "center" size="100" placeholder="Find Hotel" required>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-danger">Search</button>
+          </div>
         </div>
-      </div>
-    </form></br></br>
+      </form></br></br>
 
+    </div>
   </div>
-</div>
 </div>
 
 <div class="row">
-    <!-- Begin first column. -->
-    <div class="col-md-3">
-        <div class="container">
-            <h2>Filters</h2>
-            {% include 'hotels/search_form.html' %}
-        </div>
-    </div><!-- End first column. -->
+  <!-- Begin first column. -->
+  <div class="col-md-3">
+    <div class="container">
+      <h2>Filters</h2>
+      {% include 'hotels/search_form.html' %}
+    </div>
+  </div><!-- End first column. -->
 
 
 
   <div class="col-md-9">
+   
     {% for hotel in hotels %}
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="media">
-                    <div class="media-left media-middle">
-                        {% for image in hotel.images_as_list %}
-                            <a href="#">
-                                <img class="media-object" src="{{ image }}" alt="hotel image" width="200" height="200">
-                            </a>
-                        {% endfor %}
-                    </div>
-                    <div class="media-body">
-                        <h3 class="media-heading">{{ hotel.name }}</h3>
-                        <p>{{ hotel.address }}</p>
-                        <h4 class="pull-right">${{ hotel.price }}</h4>
+    <div class="col-lg-4 col-sm-6 col-xs-12">
+      <div class="thumbnail">
+        <a href="#">
+          <img class="media-object" src="{{ hotel.images_as_list.0 }}" alt="hotel image" width="200" height="200">
+        </a>
+        
 
-                        <form class="form-horizontal" role="form" action="{% url 'hotels:detail' hotel.id %}" method="GET" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                    <button type="submit" class="btn btn-success">More Details</button>
-                                </div>
-                            </div>
-                        </form>
-                </div>
-             </div>
+        <h3 class="media-heading">{{ hotel.name }}</h3>
+        <p>{{ hotel.address }}</p>
+        <h4 class="pull-right">${{ hotel.price }}</h4>
+
+        <form class="form-horizontal" role="form" action="{% url 'hotels:detail' hotel.id %}" method="GET" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-success">More Details</button>
+            </div>
           </div>
+        </form>
+      </div>
+
     </div>
     {% endfor %}
-    <nav aria-label="Page navigation example">
-      <ul class="pagination" align="center">
-        <li class="page-item disabled">
-          <a class="page-link" href="#" tabindex="-1">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#">Next</a>
-        </li>
-      </ul>
-    </nav>
+
+    <div class="pagination">
+      <span class="step-links">
+        {% if hotels.has_previous %}
+        <a href="?page={{ hotels.previous_page_number}}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          Page {{ hotels.number }} of {{ hotels.paginator.num_pages }}
+        </span>
+
+        {% if hotels.has_next %}
+        <a href="?page={{ hotels.next_page_number}}">next</a>
+        {% endif %}
+      </span>
+    </div>
+
 
   </div>
 
-    </div>
+</div>
 
 {% endblock %}

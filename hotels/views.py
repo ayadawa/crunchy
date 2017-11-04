@@ -3,11 +3,24 @@ from .models import Hotel
 from bookings.forms import CreateBookingForm
 from .forms import SearchHotelForm
 from django.http import Http404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
-    hotels = Hotel.objects.all()
+    hotels_list = Hotel.objects.all()
     form = SearchHotelForm()
+    paginator = Paginator(hotels_list, 6) # Show 25 contacts per page
+
+    page = request.GET.get('page')
+    try:
+        hotels = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        hotels = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        hotels = paginator.page(paginator.num_pages)
+
     context = {
         'hotels': hotels,
         'form': form,
