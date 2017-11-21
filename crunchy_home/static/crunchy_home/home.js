@@ -1,11 +1,19 @@
-//not working yet
-$(window).scroll(function() {
-  $(".slideanim").each(function(){
-    var pos = $(this).offset().top;
+$(document).ready(function(){
 
-    var winTop = $(window).scrollTop();
-    if (pos < winTop + 600) {
-      $(this).addClass("slide");
-    }
-  });
+   var options = [
+        {selector: '#fade-image', offset: 100, callback: function(el) {
+            Materialize.fadeInImage($(el));
+        } },
+        {selector: '#staggered-1', offset: 50, callback: function(el) {
+            Materialize.showStaggeredList($(el));
+        } },
+        {selector: '#staggered-2', offset: 100, callback: function(el) {
+            Materialize.showStaggeredList($(el));
+        } },
+        {selector: '#staggered-3', offset: 150, callback: function(el) {
+            Materialize.showStaggeredList($(el));
+        } }
+    ];
+    Materialize.scrollFire(options);
+
 });

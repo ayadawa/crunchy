@@ -2,33 +2,34 @@
 {% block title %}Registration{% endblock %}
 
 {% block content %}
+{% load material_form %}
+    <div class="row container">
 
-    <div class="row container-fluid">
-
-        <div class="col-sm-12 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-body">
+        <div class="col s12 m12 l12">
+            <!-- <div class="panel panel-default">
+                <div class="panel-body"> -->
                     <h3>Register for an Account</h3>
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <form class="form-horizontal" role="form" action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        {% include 'accounts/form_template.html' %}
-                        <div class="form-group">
+                        {% form form=form %} {% endform %}
+
+                        <div class="input-field">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </div>
                         </div>
                     </form>
-                </div>
+                <!--</div>-->
                 <div class="panel-footer">
 
                     Already have an account? <a href="{% url 'accounts:login' %}">Click here</a> to log in.
 
 
                 </div>
-            </div>
+            <!-- </div>-->
         </div>
     </div>
 

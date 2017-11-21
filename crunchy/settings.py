@@ -37,13 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'material',
     'accounts',
     'payments',
     'hotels',
     'bookings',
-
     'viewer',
-
     'crunchy_home',
 ]
 

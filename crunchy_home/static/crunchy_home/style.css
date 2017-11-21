@@ -17,24 +17,19 @@
 
 .popup {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   overflow: hidden;
-  background: black;
+  background: blue;
   color: #fff;
   visibility: hidden;
   opacity: 0;
   transition: .5s ease;
-  text-align: center;
-  padding-top: 5cm;
+  vertical-align: middle;
 }
 
 .parent:hover .popup {
   visibility: visible;
   opacity: 1;
-  height: 100%;
+
 }
 
 .bg-2 {
@@ -42,3 +37,8 @@
     padding: 60px;
 }
 
+.test {
+    background-color: #5b80b2;
+    padding: 25px;
+    opacity: 0.5;
+}

@@ -1,9 +1,12 @@
 {% extends 'crunchy/base.html' %}
 {% block title %}Login{% endblock %}
 
-{% block content %}
+<div class="container">
+{% load static %}
+    {% block content %}
+    <script src = "{% static 'accounts/home.js' %}"></script>
 
-    <div class="row container-fluid">
+    <div class="row container">
 
         <div class="col-sm-12 col-md-6">
             <div class="panel panel-default">
@@ -14,23 +17,20 @@
                     {% endif %}
                     <form class="form-horizontal" role="form" action="{% url 'accounts:login'%}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="id_username">
-                                Username:
+                        <div class="input-field">
+                            <input id="id_username" maxlength="30" name="username" type="text">
+                            <!-- <input id="id_username" type="text" class="validate"> -->
+                            <label class="active" for="id_username">
+                                Username
                             </label>
-                            <div class="col-sm-10">
-                                <input id="id_username" maxlength="30" name="username" type="text">
-                            </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="id_password">
-                                Password:
+                        <div class="input-field">
+                            <input id="id_password" maxlength="30" name="password" type="password">
+                            <label class="active" for="id_password">
+                                Password
                             </label>
-                            <div class="col-sm-10">
-                                <input id="id_password" maxlength="30" name="password" type="password">
-                            </div>
                         </div>
-                        <div class="form-group">
+                        <div class="input-field">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-success">Submit</button>
                             </div>
@@ -45,3 +45,5 @@
     </div>
 
 {% endblock %}
+</div>
+

@@ -3,21 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Crunchy{% endblock %}</title>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
+      {% load staticfiles %}
+      {% include 'material/includes/material_css.html' %}
+      <script src="{% static 'material/js/jquery.js' %}"></script>
+      {% include 'material/includes/material_js.html' %}
+      {% load material_form %}
 <body>
 
 {% include 'crunchy/navigation_bar.html' %}
 
-
     {% block content %}
     {% include 'crunchy/navigation_bar.html' %}
     {% endblock %}
-
 
 </body>
 </html>
