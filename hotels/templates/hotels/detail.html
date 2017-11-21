@@ -95,7 +95,20 @@
                     <form role="form" action="{% url 'bookings:create' hotel.id %}" method="POST">
                         {% csrf_token %}
                         <h3>${{ hotel.price }}<small> per night</small></h3>
-                        rating: {{ hotel.rating }}
+                        <ul class="static_ratings">
+
+                            {% for i in range %}
+                                {% if i <= hotel_rating %}
+                                    <li class="active" id="rat_{{ i }}"><label for="rating_{{ i }}" class="glyphicon glyphicon-star" aria-hidden="true"></label>
+                                        <input type="radio" name="rating" id="rating_{{ i }}" value="{{ i }}"/>
+                                    </li>
+                                {% else %}
+                                    <li id="rat_{{ i }}"><label for="rating_{{ i }}" class="glyphicon glyphicon-star" aria-hidden="true"></label>
+                                        <input type="radio" name="rating" id="rating_{{ i }}" value="{{ i }}"/>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
                         <hr>
                         {{ form.as_p }}
                         <br>
@@ -103,6 +116,9 @@
                     </form>
                 </div>
             </div>
+
+            {% load staticfiles %}
+            <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
         </div><!-- End second column. -->
 
     </div>

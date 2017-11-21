@@ -33,7 +33,9 @@ def detail(request, hotel_id):
     hotel = get_object_or_404(Hotel, pk=hotel_id)
     context = {
         'hotel': hotel,
-        'form': form
+        'form': form,
+        'range': range(1, 6),
+        'hotel_rating': round(hotel.rating, 0),
     }
     return render(request, 'hotels/detail.html', context)
 

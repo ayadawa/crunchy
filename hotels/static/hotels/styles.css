@@ -24,6 +24,30 @@ ul.ratings li input[type="radio"] {
     display: none;
 }
 
+/*Static ratings related, this differs from the the dynamic rating
+as they have hover effects, these remain as they are upon initialization */
+ul.static_ratings li.active {
+    color: yellow;
+}
+
+ul.static_ratings li input[type="radio"] {
+    display: none;
+}
+
+ul.static_ratings {
+    padding: 0;
+    margin: 0;
+}
+
+ul.static_ratings li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0px;
+    color: white;
+    text-shadow: 2px 2px 7px grey;
+    font-size: 25px; !important;
+}
+
 .thumbnail:hover {
   background: #f7f7f7;
 }
@@ -56,7 +80,4 @@ ul.ratings li input[type="radio"] {
     width: 50%;
     left: 25%;
     top: 20px;
-}
-
-
 }
