@@ -23,3 +23,10 @@ window.onload = function() {
     selected.addClass('active');
     selected.prevAll().addClass('active');
 };
+
+function showImage(imgPath) {
+    var curImage = document.getElementById('currentImg');
+    curImage.src = imgPath;
+    curImage.alt = imgPath;
+    curImage.title = imgPath;
+}

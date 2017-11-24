@@ -81,3 +81,22 @@ ul.static_ratings li {
     left: 25%;
     top: 20px;
 }
+
+/* For the thumbnail image display */
+
+.main-container {
+    background-color: #5b80b2;
+}
+
+.main-display {
+
+}
+
+.bottom-nav-display {
+
+}
+
+/*.bottom-nav-display img {*/
+    /*!*width: 50px;*!*/
+    /*!*height: 50px;*!*/
+/*}*/
