@@ -7,19 +7,21 @@
 {% load staticfiles %}
 <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
 
-<div class="search-bar"
-<div class = "container-fluid">
-
+<div class="search-bar">
 
   <div class="container">
     <div class="row justify-content-md-center">
       <div class ="container-fluid">
-        <div class="search-text"
-        <form class="form-inline" align ="center">
+        <div class="search-text">
+        <form class="form-inline" >
           <div class="input-group">
           <input type="search" class="form-control" size="100" placeholder="Find Hotel" required>
             <div class="input-group-btn">
-            <button type="button" class="btn btn-danger">Search</button>
+                <button class="btn btn--primary horus-btn-search">
+                    <span class="horus-btn-search__icon icon-ic icon-contain icon-bg-icn_search_light">
+                        <span class="horus-btn-search__label" style="color:white;">Search</span>
+                    </span>
+                </button>
             </div>
           </div>
         </form></br></br>
@@ -27,52 +29,39 @@
       </div>
     </div>
   </div>
+
 </div>
 
 
   <div class="row">
     <!-- Begin first column. -->
-    <div class="col-md-3">
+    <div class="col-md-3 ">
       <div class="container">
-      <h2>Filters</h2>
+          <br></br>
       {% include 'hotels/search_form.html' %}
       </div>
     </div><!-- End first column. -->
 
-
   <div class="col-md-9">
 
     {% for hotel in hotels %}
-    <div class="col-lg-4 col-sm-6 col-xs-12" style="top: 20px; right:40px;">
-    <div class="thumbnail">
-    <a href="#">
-    <img class="media-object" src="{{ hotel.images_as_list.0 }}" alt="hotel image" width="200" height=auto;>
-    </a>
-
-
-    <h4 class="media-heading">{{ hotel.name }}</h4>
-    <p>{{ hotel.address }}</p>
-    <h4 class="pull-right">${{ hotel.price }}</h4>
-
-      <form class="form-horizontal" role="form" action="{% url 'hotels:detail' hotel.id %}" method="GET" enctype="multipart/form-data">
-      {% csrf_token %}
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-success">More Details</button>
-          </div>
+   <div class="hotel-cards" style="top: 20px; right:40px; margin-top:35px;">
+    <div class="col-lg-4 col-sm-6 col-xs-12 card" style="margin: 8px;";>
+        <div class="col-md-12">
+            <a href="{% url 'hotels:detail' hotel.id %}">
+            <img class="media-object" src="{{ hotel.images_as_list.0 }}" alt="hotel image" align="center" width="250" height="200";>
+             </a>
         </div>
-      </form>
-
-    </div>
+        <h4 class="media-heading">{{ hotel.name }}</h4>
 
   </div>
+       </div>
+
   {% endfor %}
 
 
   <div class="row">
-    <div class="col-md-3">
-    </div>
-      <div class = "col-sm-9">
+      <div class = "col-sm-12" style="top: 30px; left:120px;">
 
             <ul class="pagination">
               {% if hotels.has_previous %}
@@ -101,7 +90,8 @@
 
 
   </div>
-</div>
+      </div>
+
 
 
 
