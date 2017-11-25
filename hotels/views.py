@@ -9,7 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def index(request):
     hotels_list = Hotel.objects.all()
     form = SearchHotelForm()
-    paginator = Paginator(hotels_list, 15) # Show 25 contacts per page
+    paginator = Paginator(hotels_list, 15)  # Show 25 contacts per page
 
     page = request.GET.get('page')
     try:
@@ -45,7 +45,7 @@ def search(request):
         form = SearchHotelForm(request.GET)
         if form.is_valid():
             rating = form.cleaned_data['rating']
-            hotels = Hotel.objects.filter(rating=rating)
+            hotels = Hotel.objects.filter(rating__lte=rating).order_by('rating')
             context = {
                 'hotels': hotels,
                 'form': form,

@@ -16,25 +16,16 @@
         <div class="col-md-6">
             <div class="main-container">
                 <div class="main-display">
-                    <a href="#" class="thumbnail">
-                        <img id="currentImg" src="{{ hotel.images_as_list.first }}" />
-                    </a>
+{#                    <a href="#" class="thumbnail">#}
+                        <img id="currentImg" src="{{ hotel.images_as_list.0 }}" />
+{#                    </a>#}
                </div>
                <div class="bottom-nav-display">
                    {% for image in hotel.images_as_list %}
-                        <a href="#" class="thumbnail">
                         <img src="{{ image }}" onclick="showImage('{{ image }}');" />
-                        </a>
                     {% endfor %}
                </div>
             </div>
-
-
-{#            {% for image in hotel.images_as_list %}#}
-{#                <a href="#" class="thumbnail">#}
-{#                    <img class="media-object" src="{{ image }}" alt="hotel image">#}
-{#                </a>#}
-{#            {% endfor %}#}
 
             <hr>
 

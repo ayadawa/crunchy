@@ -2,10 +2,14 @@
 {% extends 'crunchy/base.html' %}
 {% block title %}Hotels{% endblock %}
 
+{% block styles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
+    <script type="text/javascript" src="{% static 'hotels/styles.js' %}" ></script>
+{% endblock %}
+
 {% block content %}
 
-{% load staticfiles %}
-<link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
 
 <div class="search-bar"
 <div class = "container-fluid">
@@ -63,6 +67,10 @@
         </div>
       </form>
 
+        <h4 class="media-heading">{{ hotel.name }}</h4>
+        <h4 class="media-heading">{{ hotel.rating }}</h4>
+
+
     </div>
 
   </div>
@@ -93,7 +101,7 @@
                 <li class="disabled"><span>&raquo;</span></li>
               {% endif %}
             </ul>
- 
+
       </div>
   </div>
 
