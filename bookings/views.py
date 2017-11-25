@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from .models import Booking
+from bookings.models import RewardPoint
 from hotels.models import Hotel
 from .forms import CreateBookingForm
+from django.contrib import messages
 
 
 def detail(request, booking_id):
@@ -35,7 +37,24 @@ def create(request, hotel_id):
                 booking.start_time = form.cleaned_data['check_in_date']
                 booking.end_time = form.cleaned_data['check_out_date']
                 booking.save()
+
+                # add reward points based on 10% of price
+                new_points = float(hotel.price) * .10
+                reward_point = RewardPoint()
+                if RewardPoint.objects.filter(user=request.user).exists():
+                    rp_object = RewardPoint.objects.get(user=request.user)
+                    current_points = rp_object.reward_points
+                    total_points = int(current_points + new_points)
+                    rp_object.reward_points = total_points
+                    rp_object.save()
+                else:
+                    reward_point.user = request.user
+                    reward_point.reward_points = int(new_points)
+                    reward_point.save()
+
+
                 url_path = '/bookings/%s' % booking.id
+                messages.info(request, str(int(new_points))+' Reward Points Gained! ')
                 return redirect(url_path)
             else:
                 return redirect('/hotels/' + hotel_id)

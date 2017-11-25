@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'^logout/$', views.logout_user, name='logout'),
     # ex. accounts/500
     url(r'^(?P<user_id>[0-9]+)/$', views.profile_user, name='profile'),
+
+    url(r'^rewards/$', views.rpoints, name='rewards'),
 ]
