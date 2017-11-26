@@ -27,7 +27,7 @@ def detail(request, booking_id):
 def create(request, hotel_id):
     if request.user.is_authenticated:
         if request.method == "POST":
-            form = CreateBookingForm(request.POST)
+            form = CreateBookingForm(request.POST,id = hotel_id)
 
             if form.is_valid():
                 hotel = Hotel.objects.get(pk=hotel_id)
@@ -57,7 +57,10 @@ def create(request, hotel_id):
                 messages.info(request, str(int(new_points))+' Reward Points Gained! ')
                 return redirect(url_path)
             else:
-                return redirect('/hotels/' + hotel_id)
+                messages.info(request,"Could not book, please pick another date to book")
+                form = CreateBookingForm()
+                return redirect('/hotels/' + hotel_id,form)
+
         else:
             return Http404()
     else:

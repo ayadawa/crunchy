@@ -29,7 +29,7 @@ def index(request):
 
 
 def detail(request, hotel_id):
-    form = CreateBookingForm()
+    form = CreateBookingForm(None)
     hotel = get_object_or_404(Hotel, pk=hotel_id)
     context = {
         'hotel': hotel,
