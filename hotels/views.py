@@ -52,7 +52,7 @@ def search(request):
             }
             return render(request, 'hotels/index.html', context)
         else:
-            return redirect('/hotels/')
+            return redirect('/hotels/hotels/')
     else:
         return Http404()
 

@@ -15,7 +15,7 @@
                 <div class="input-group">
                     <input type="search" class="form-control" size="50" placeholder="Find Hotel" required>
                 <div class="input-group-btn">
-                    <button type="button" class="btn btn-danger">Search</button>
+                    <a class="btn btn-primary" href="{% url 'hotels:search' %}">Search</a>
                 </div>
             </div>
         </form>
@@ -23,15 +23,14 @@
 
         <!-- Explore destination section -->
         <div class = "bg-1 container-fluid text-center">
-            <h2>Explore destinations</h2>
+            <h1 class="display-2">Explore destinations</h1>
             <br>
-            <div class = "row">
+            <div class = "row slideanim">
                 <div class = "col-sm-4 ">
                     <div class ="parent">
                         <img src = "{% static "crunchy_home/images/sf.jpg" %}" class = "img-responsive" alt="San Francisco">
                         <div class ="popup">
                             <h2> SAN FRANCISCO </h2>
-                            <h3> 289 Hotels </h3>
                         </div>
                     </div>
 
@@ -41,7 +40,6 @@
                         <img src = "{% static "crunchy_home/images/la.jpg" %}" class="img-responsive" alt="Los Angeles">
                         <div class = "popup">
                             <h2> LOS ANGELES </h2>
-                            <h3> 440 Hotels </h3>
                         </div>
                     </div>
 
@@ -51,7 +49,6 @@
                         <img src = "{% static "crunchy_home/images/sandiego.jpg" %}" class="img-responsive" alt="San Diego">
                         <div class = "popup">
                             <h2> SAN DIEGO </h2>
-                            <h3> 324 Hotels </h3>
                         </div>
                     </div>
                 </div>
@@ -59,12 +56,22 @@
         </div>
 
         <div class = "bg-2 container-fluid text-center">
-            <h2>Join for more rewards</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus odio velit, pellentesque in nulla in, aliquet rutrum augue. In non ornare ligula.
+            <div class="row">
+                <h1 class="display-2">Join for more rewards</h1>
+                <br>
+                <div class="col-sm-4 slideanim"><span id= "logo" class="glyphicon glyphicon-plane"></span></div>
+                <div class="col-sm-8">
+                    <br>
+                    <br>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus odio velit, pellentesque in nulla in, aliquet rutrum augue. In non ornare ligula.
                 Nunc neque ex, iaculis id metus non, ultricies luctus sapien. Integer finibus dolor magna, sit amet condimentum nisi malesuada vel.
                 Suspendisse dapibus condimentum nibh et ultricies. Donec a eleifend diam, quis maximus nisi. Sed nec nibh eu purus aliquet ullamcorper
-                at non neque. Integer sagittis vel enim eget tempus.</p>
+                at non neque. Integer sagittis vel enim eget tempus.
+            </p>
+                </div>
         </div>
+        </div>
+
     </body>
 
 
