@@ -3,11 +3,13 @@
 {% block title %}Detail Page For Reservation{% endblock %}
 
 {% block content %}
+
     <div class="panel panel-default">
          <div class="panel-body">
             <div class="row">
                 <!-- Begin first column. -->
-                <div class="col-md-5">
+                <div class="col-md-4">
+
                     {% for image in hotel.images_as_list %}
                         <a href="#" class="thumbnail">
                             <img class="media-object" src="{{ image }}" alt="hotel image">
@@ -16,27 +18,49 @@
                 </div><!-- End first column. -->
 
                 <!-- Begin second column. -->
+
                 <div class="col-md-7">
                     <h3 class="media-heading">{{ hotel.name }}</h3>
                     Description of the hotel will go here...
                     <p>{{ hotel.city }}</p>
                     <h4 class="pull-right">${{ hotel.price }}</h4>
 
-
+                <div class = container>
                     <h1>Hotel reserved from: </h1>
                     <h1>{{ booking.check_in_date }}</h1>
                     <h1>{{ booking.check_out_date }}</h1>
-
+                </div>
                     <form class="form-horizontal" role="form" action="delete/" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+                            <br>
+                                <div class="form-group">
+                            <div class="col-sm-offset-0 col-sm-4">
+                                <br>
+                                <button type="submit" class="center-block btn btn-danger" style="width:80%;height:35px;font-size:15px;">Update Booking</button>
                             </div>
                         </div>
+                                    </div>
+                        </div>
                     </form>
+  <hr>
 
+            <h1>{{ hotel.name }}</h1>
+
+            <h3>Description</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of
+                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+            <hr>
                 </div><!-- End second column. -->
+
             </div>
          </div>
     </div>

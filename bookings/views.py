@@ -50,6 +50,6 @@ def delete(request, booking_id):
     if request.method == "POST":
         booking = Booking.objects.get(pk=booking_id)
         Booking.objects.filter(id=booking_id).delete()
-        url_path = '/viewer/%s' % booking.hotel_id
+        url_path = '/hotels/%s' % booking.hotel_id
         return redirect(url_path)
 
