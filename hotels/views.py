@@ -4,6 +4,7 @@ from bookings.forms import CreateBookingForm
 from .forms import SearchHotelForm
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from . import placeid
 
 
 def index(request):
@@ -31,12 +32,18 @@ def index(request):
 def detail(request, hotel_id):
     form = CreateBookingForm(None)
     hotel = get_object_or_404(Hotel, pk=hotel_id)
+    place_id = placeid.get_hotel_id(hotel_id)
     context = {
         'hotel': hotel,
         'form': form,
         'range': range(1, 6),
         'hotel_rating': round(hotel.rating, 0),
     }
+
+    context['p_id'] = place_id
+
+
+    print(place_id)
     return render(request, 'hotels/detail.html', context)
 
 
