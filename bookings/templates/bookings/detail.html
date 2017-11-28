@@ -3,6 +3,38 @@
 {% block title %}Detail Page For Reservation{% endblock %}
 
 {% block content %}
+    {% if messages %}
+
+
+        <ul class="messages">
+            {% for message in messages %}
+                <div class = "text-center">
+
+                <div class="alert alert-success text-center">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+                </div>
+
+
+            {% endfor %}
+        </ul>
+
+
+        <style type="text/css">
+        .alert {
+            font-size: 20px;
+            padding-bottom: 10px;
+            width:40%;
+            margin-left: 30%;
+            left: 33%;
+            background-color: #D9EDF7;
+
+        }
+        </style>
+    {% endif %}
 
     <div class="panel panel-default">
          <div class="panel-body">
@@ -29,19 +61,19 @@
                     <h1>Hotel reserved from: </h1>
                     <h1>{{ booking.check_in_date }}</h1>
                     <h1>{{ booking.check_out_date }}</h1>
-<<<<<<< HEAD
+
                 </div>
-=======
 
-                        {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+{#                        {% if messages %}#}
+{#                    <ul class="messages">#}
+{#                        {% for message in messages %}#}
+{#                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                    {% endif %}#}
 
->>>>>>> 23db966057ea5a38361af615cf988c83073de096
+
+
                     <form class="form-horizontal" role="form" action="delete/" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">

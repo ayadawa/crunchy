@@ -57,7 +57,7 @@ def create(request, hotel_id):
                 messages.info(request, str(int(new_points))+' Reward Points Gained! ')
                 return redirect(url_path)
             else:
-                messages.info(request,"Could not book, please pick another date to book")
+                messages.info(request,"Hotel is not available to book for this period")
                 form = CreateBookingForm()
                 return redirect('/hotels/' + hotel_id,form)
 
