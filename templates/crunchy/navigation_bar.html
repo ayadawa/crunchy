@@ -1,6 +1,35 @@
+<style>
 
+    li {
+        height: 25px;
+        float: none;
+        margin-right: 0px;
+        padding: 0 20px;
+        display: inline-block;
+    }
 
-<nav class="navbar navbar-default">
+    li:last-child {
+        border-right: none;
+    }
+
+    li a {
+        text-decoration: none;
+        color: #ccc;
+        font-family: 'Barlow Semi Condensed', sans-serif;
+        text-transform: uppercase;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    li a:hover {
+        color: #666;
+    }
+</style>
+
+<nav class="navbar navbar-inverse bg-primary">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -17,45 +46,42 @@
 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbarhome">
+
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-              <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{% url 'hotels:hotels' %}">Hotels</a>
+                        </li>
+
                         <li>
                             <a href="{% url 'viewer:reservations' %}">Reservations</a>
                         </li>
 
-                        <li class="divider"></li>
+                         <li>
+                            <a href="{% url 'accounts:rewards' %}">Rewards</a>
+                        </li>
+
                         <li>
                             <a href="#">Settings </a>
                         </li>
-                        <li class="divider"></li>
+
                         <li>
                             <a href="{% url 'accounts:logout' %}">Logout</a>
                         </li>
-                    </ul>
-                </li>
           {% else %}
-              <li>
-              <p class="navbar-btn">
-                  <a href="{% url 'accounts:login' %}" class="btn btn-default">Log In</a>
-              </p>
+               <li>
+                  <a href="{% url 'hotels:hotels' %}">Hotels</a>
+               </li>
+               <li>
+                  <a href="{% url 'accounts:login' %}">Log In</a>
               </li>
 
               <li>
-              <p class="navbar-btn">
-                  <a href="{% url 'accounts:register' %}" class="btn btn-default">Sign Up</a>
-              </p>
+                  <a href="{% url 'accounts:register' %}">Sign Up</a>
               </li>
           {% endif %}
             </ul>
 
         </div><!-- /.container-fluid -->
-
-    </div>
 
 </nav>

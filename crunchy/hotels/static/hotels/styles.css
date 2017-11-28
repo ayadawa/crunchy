@@ -1,0 +1,83 @@
+ul.ratings {
+    padding: 0;
+    margin: 0;
+}
+
+ul.ratings li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0px;
+    color: white;
+    text-shadow: 2px 2px 7px grey;
+    font-size: 25px; !important;
+}
+
+ul.ratings li:hover {
+    color: yellow;
+}
+
+ul.ratings li.active, ul.ratings li.activeHover {
+    color: yellow;
+}
+
+ul.ratings li input[type="radio"] {
+    display: none;
+}
+
+/*Static ratings related, this differs from the the dynamic rating
+as they have hover effects, these remain as they are upon initialization */
+ul.static_ratings li.active {
+    color: yellow;
+}
+
+ul.static_ratings li input[type="radio"] {
+    display: none;
+}
+
+ul.static_ratings {
+    padding: 0;
+    margin: 0;
+}
+
+ul.static_ratings li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0px;
+    color: white;
+    text-shadow: 2px 2px 7px grey;
+    font-size: 25px; !important;
+}
+
+.thumbnail:hover {
+  background: #f7f7f7;
+}
+
+.thumbnail {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  text-align: center;
+  font-size: 10px;
+}
+.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.search-bar{
+    background-color:#37454d;
+
+}
+.search-text{
+    position: relative;
+    width: 50%;
+    left: 25%;
+    top: 20px;
+}
