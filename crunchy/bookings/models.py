@@ -13,3 +13,9 @@ class Booking(models.Model):
         return "%s in %s from %s - %s" % (self.user.username, self.hotel.name, self.check_in_date, self.check_out_date)
 
 
+class RewardPoint(models.Model):
+    user = models.ForeignKey(User)
+    reward_points = models.IntegerField(default=0)
+
+    def __str__(self):
+        return "name:  %s rp: %s" % (self.user.username, self.reward_points)

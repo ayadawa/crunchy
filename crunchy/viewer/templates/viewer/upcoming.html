@@ -2,6 +2,20 @@
 {% block title %}Hotel App {% endblock %}
 
 {% block content %}
+<style>
+    div.relative {
+        position: center;
+
+        border: 3px solid #769db7;
+    }
+
+    div.relative {
+        position: center;
+
+        border: 3px solid #769db7;
+    }
+</style>
+
 
     <div class="text-center">
         <ul class="nav nav-pills nav-stacked ">
@@ -9,52 +23,26 @@
             <li><a href="{% url 'viewer:previous' %}">Previous Reservations</a></li>
             <li><a href="{% url 'viewer:upcoming' %}">Upcoming Reservations</a></li>
 
-            <div class="content container">
-                <div class="row">
-
-                    <style>
-                        div.relative {
-                            position: center;
-
-                            border: 3px solid #769db7;
-                        }
-                    </style>
-                    <div class="relative">
-                        <b>
-                            Reservation 1 </br>
-                            Username: nithyar </br>
-                            Hotel Name: Hotel 1 </br>
-                            Start Date: 11/01/2017 - End Date: 11/05/2017 </br>
-
-                            </br>
-                        </b>
+            {% for booking in bookings %}
+                <div class="content container">
+                    <div class="row">
+                        <div class="relative">
+                            <br>
+                            <b>
+                                Reservation {{ booking.id }} </br>
+                                Username: {{ user.username }} </br>
+                                Hotel Name: {{ hotel.name }} </br>
+                                Start Date: {{ booking.check_in_date }} - End Date: {{ booking.check_out_date }} </br>
+                                </br>
+                            </b>
+                            <a href="/bookings/{{ booking.id }}"><button type="button" class="btn btn-success" value="More Details">More Details</button></a>
+                            <a href="delete/{{ booking.id }}"><button type="button" class="btn btn-danger" value="Cancel Reservation">Cancel Reservation</button></a>
+                            <br>
+                            <br>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="content container">
-                <div class="row">
-                    <style>
-                        div.relative {
-                            position: center;
-
-                            border: 3px solid #769db7;
-                        }
-                    </style>
-                    <div class="relative">
-                        <b>
-                            Reservation 2 </br>
-                            Username: nithyar </br>
-                            Hotel Name: Hotel 2 </br>
-                            Start Date: 11/10/2017 - End Date: 11/15/2017 </br>
-
-                            </br>
-                        </b>
-                    </div>
-                </div>
-            </div>
-
-
+            {% endfor %}
         </ul>
     </div>
 

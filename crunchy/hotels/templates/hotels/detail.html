@@ -1,19 +1,31 @@
 {% extends 'crunchy/base.html' %}
 {% block title %}Hotels{% endblock %}
 
+{% block styles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
+    <script type="text/javascript" src="{% static 'hotels/styles.js' %}" ></script>
+{% endblock %}
+
 {% block content %}
     <div class="container">
     <div class="row">
         <div class="col-md-1">
         </div>
-
         <!-- Begin first column. -->
         <div class="col-md-6">
-            {% for image in hotel.images_as_list %}
-                <a href="#" class="thumbnail">
-                    <img class="media-object" src="{{ image }}" alt="hotel image">
-                </a>
-            {% endfor %}
+            <div class="main-container">
+                <div class="main-display">
+{#                    <a href="#" class="thumbnail">#}
+                        <img id="currentImg" src="{{ hotel.images_as_list.0 }}" />
+{#                    </a>#}
+               </div>
+               <div class="bottom-nav-display">
+                   {% for image in hotel.images_as_list %}
+                        <img src="{{ image }}" onclick="showImage('{{ image }}');" />
+                    {% endfor %}
+               </div>
+            </div>
 
             <hr>
 
@@ -113,12 +125,19 @@
                         {{ form.as_p }}
                         <br>
                         <button type="submit" class="center-block btn btn-danger" style="width:100%;height:50px;font-size:20px;">Request to Book</button>
+                    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
                     </form>
                 </div>
             </div>
 
-            {% load staticfiles %}
-            <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
+{#            {% load staticfiles %}#}
+{#            <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">#}
         </div><!-- End second column. -->
 
     </div>
