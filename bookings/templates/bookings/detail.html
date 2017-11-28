@@ -29,7 +29,19 @@
                     <h1>Hotel reserved from: </h1>
                     <h1>{{ booking.check_in_date }}</h1>
                     <h1>{{ booking.check_out_date }}</h1>
+<<<<<<< HEAD
                 </div>
+=======
+
+                        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+>>>>>>> 23db966057ea5a38361af615cf988c83073de096
                     <form class="form-horizontal" role="form" action="delete/" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">
