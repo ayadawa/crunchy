@@ -1,49 +1,38 @@
-<style>
-    #special-container {
-        height: 71.1%;
-        margin-top: 50px;
-        margin-left: 200px;
-    }
-</style>
-
 {% extends 'crunchy/base.html' %}
 {% block title %}Login{% endblock %}
 
 {% block content %}
-    {% load static %}
-    <link rel = "stylesheet" type = "text/css" href = "{% static 'accounts/login.css' %}" />
+
+{% load static %}
+<link rel = "stylesheet" type = "text/css" href = "{% static 'accounts/login.css' %}" />
 
     <div class="container-fluid">
-    <div class="wrapper">
+         <div class="wrapper">
+             <div class="form-login">
+                 <h2 class="form-login-heading">Log In</h2>
 
-            <div class="form-login">
-                    <h2 class="form-login-heading">Log In</h2>
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
+
                     <form class="form-horizontal" role="form" action="{% url 'accounts:login'%}" method="post" enctype="multipart/form-data">
-                        {% csrf_token %}
+                     {% csrf_token %}
                         <div class="form-group">
-
-                                <input id="id_username" maxlength="30" name="username" type="text" class="form-control" placeholder="User Name">
-
+                            <input id="id_username" maxlength="30" name="username" type="text" class="form-control" placeholder="User Name">
                         </div>
                         <div class="form-group">
-
-                                <input id="id_password" maxlength="30" name="password" type="password" class="form-control" placeholder="Password">
+                            <input id="id_password" maxlength="30" name="password" type="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="form-group">
-
-                                <button type="submit" class="btn btn-lg btn-success btn-block">Submit</button>
-
+                            <button type="submit" class="btn btn-lg btn-success btn-block">Submit</button>
                         </div>
                     </form>
-                <div class="panel-footer">
-                    Don't have an account? <a href="{% url 'accounts:register' %}">Click here</a> to register.
-                </div>
-    </div>
-    </div>
 
+                 <div class="panel-footer">
+                    Don't have an account? <a href="{% url 'accounts:register' %}">Click here</a> to register.
+                 </div>
+             </div>
+         </div>
     </div>
 
 

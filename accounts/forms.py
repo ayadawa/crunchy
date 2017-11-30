@@ -5,7 +5,9 @@ from hotels.models import Hotel
 
 
 class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(label='username', widget=forms.TextInput(attrs={'placeholder': 'User Name','class' : 'form-control'}))
+    password = forms.CharField(label='password', widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'}))
+    email = forms.CharField(label='email', widget=forms.TextInput(attrs={'placeholder': 'E-mail', 'class': 'form-control'}))
 
     class Meta:
         model = User
