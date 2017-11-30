@@ -1,47 +1,50 @@
+<style>
+    #special-container {
+        height: 71.1%;
+        margin-top: 50px;
+        margin-left: 200px;
+    }
+</style>
+
 {% extends 'crunchy/base.html' %}
 {% block title %}Login{% endblock %}
 
 {% block content %}
+    {% load static %}
+    <link rel = "stylesheet" type = "text/css" href = "{% static 'accounts/login.css' %}" />
 
-    <div class="row container-fluid">
+    <div class="container-fluid">
+    <div class="wrapper">
 
-        <div class="col-sm-12 col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <h3>Log In</h3>
+            <div class="form-login">
+                    <h2 class="form-login-heading">Log In</h2>
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <form class="form-horizontal" role="form" action="{% url 'accounts:login'%}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="id_username">
-                                Username:
-                            </label>
-                            <div class="col-sm-10">
-                                <input id="id_username" maxlength="30" name="username" type="text">
-                            </div>
+
+                                <input id="id_username" maxlength="30" name="username" type="text" class="form-control" placeholder="User Name">
+
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="id_password">
-                                Password:
-                            </label>
-                            <div class="col-sm-10">
-                                <input id="id_password" maxlength="30" name="password" type="password">
-                            </div>
+
+                                <input id="id_password" maxlength="30" name="password" type="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
+
+                                <button type="submit" class="btn btn-lg btn-success btn-block">Submit</button>
+
                         </div>
                     </form>
-                </div>
                 <div class="panel-footer">
                     Don't have an account? <a href="{% url 'accounts:register' %}">Click here</a> to register.
                 </div>
-            </div>
-        </div>
     </div>
+    </div>
+
+    </div>
+
 
 {% endblock %}

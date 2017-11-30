@@ -27,7 +27,19 @@
     li a:hover {
         color: #666;
     }
+
+    #main-logo {
+        font-family: 'Chewy', cursive;
+        font-size: 35px;
+    }
+
+    .navbar-inverse .navbar-brand {
+    color: lightcyan;
+    }
 </style>
+
+
+
 
 <nav class="navbar navbar-inverse bg-primary">
     <div class="container-fluid">
@@ -39,7 +51,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{% url 'index' %}">Hotel Reservation</a>
+
+            <a id= "main-logo" class="navbar-brand" href="{% url 'index' %}">Crunchy</a>
 
         </div>
 
