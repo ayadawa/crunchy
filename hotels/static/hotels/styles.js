@@ -20,6 +20,12 @@ window.onload = function() {
     var rating = document.getElementById("id_rating").value;
     var ratingID = "#rat_{rating}".replace(/{rating}/g, rating);
     var selected = $(ratingID);
+
+    // var location = document.getElementById("location").text;
+
+    // var value = document.getElementById("priceOptions").value;
+    // $('#id_price').val(value);
+
     selected.addClass('active');
     selected.prevAll().addClass('active');
 };

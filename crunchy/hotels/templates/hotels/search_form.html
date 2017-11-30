@@ -1,40 +1,54 @@
-<form class="form-inline" action="/action_page.php">
 
-    <div class="form-group">
-        <div class="form">
-            <label for="location">Location:</label>
-        <input type="location" class="form-control" id="location" placeholder="Enter location" size="12" name="email">
-        </div></br>
+      <div class="well" style="width:300px;">
+      <h3 align="center">Search Filter</h3>
+        <form class="form-horizontal" role="form" action="{% url 'hotels:search' %}" method="GET" enctype="multipart/form-data">
+            {% csrf_token %}
+          <div class="form-group">
+            <label for="location1" class="control-label">Location</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="location1" size="40">
+            </div>
+          </div>
 
-        <div class="form-group">
-        <label for="pwd">Hotel Name:</label>
-        <input type="name" class="form-control" size="12" id="pwd" placeholder="Enter name" name="pwd">
-        </div></br></br>
+          <div class="form-group">
+            <label for="type1" class="control-label">Type</label>
+            <select class="form-control" name="" id="type1">
+              <option value="">Double</option>
+              <option value="">Single</option>
+              <option value="">Triple</option>
+            </select>
+          </div>
 
+          <div class="form-group">
+            <label for="priceto" class="control-label">Price Range</label>
+            <div class="input-group">
+              <div class="input-group-addon" id="basic-addon2">$</div>
+                <select class="form-control" name="" id="priceto" aria-describedby="basic-addon1">
+                    <option value="">0 - 100</option>
+                     <option value="">100 - 200</option>
+                     <option value="">> 300 </option>
+                 </select>
+            </div>
+          </div>
 
-        <label><input type="checkbox" name="topdeals"> Show only Top Deals</label></br>
-        <label><input type="checkbox" name="topdeals"> Show only avaliable</label></br></br>
-    </div>
-</form>
-
-</br>
-</br>
-</br>
-</br>
-<form class="form-horizontal" role="form" action="{% url 'hotels:search' %}" method="GET" enctype="multipart/form-data">
-    {% csrf_token %}
-        <ul class="ratings">
-            <li id="rat_1"><label for="rating_1" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_1" value="1"/></li>
-            <li id="rat_2"><label for="rating_2" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_2" value="2"/></li>
-            <li id="rat_3"><label for="rating_3" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_3" value="3"/></li>
-            <li id="rat_4"><label for="rating_4" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_4" value="4"/></li>
-            <li id="rat_5"><label for="rating_5" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_5" value="5"/></li>
+          <div class="form-group">
+            <label class="control-label">Ratings</label>
+              <ul class="ratings">
+                <li id="rat_1"><label for="rating_1" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_1" value="1"/></li>
+                <li id="rat_2"><label for="rating_2" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_2" value="2"/></li>
+                <li id="rat_3"><label for="rating_3" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_3" value="3"/></li>
+                <li id="rat_4"><label for="rating_4" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_4" value="4"/></li>
+                <li id="rat_5"><label for="rating_5" class="glyphicon glyphicon-star" aria-hidden="true"></label><input type="radio" name="rating" id="rating_5" value="5"/></li>
             {{ form.rating.as_hidden }}
-        </ul>
-        </br>
-        <button type="submit" class="btn btn-default">Submit</button>
-</form>
+            </ul>
+          </div>
 
+         <label><input type="checkbox" name="topdeals"> Show only Top Deals</label>
+        <label><input type="checkbox" name="topdeals"> Show only Avaliable</label>
+
+          <p class="text-center"><button type="submit" class="btn btn-default">Submit</button></p>
+        </form>
+      </div>
 
 {% load staticfiles %}
 <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">

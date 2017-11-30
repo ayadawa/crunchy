@@ -120,3 +120,7 @@ ul.static_ratings li {
 .btn--primary{
     background-color: #007fad;
 }
+
+li {
+    padding: 0px 12px;
+}

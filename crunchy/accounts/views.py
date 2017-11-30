@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
+from bookings.models import RewardPoint
 from .forms import UserForm
 
 
@@ -12,6 +13,14 @@ def register_user(request):
         user.set_password(password)
         user.save()
         user = authenticate(username=username, password=password)
+
+        # set up reward table
+        reward_point = RewardPoint()
+        reward_point.user = user
+        reward_point.reward_points = 0
+        reward_point.save()
+
+
         if user is not None:
             if user.is_active:
                 login(request, user)
@@ -55,3 +64,12 @@ def profile_user(request, user_id):
     return render(request, 'accounts/profile.html', context)
 
 
+def rpoints(request):
+    if request.user.is_authenticated:
+        user = request.user
+        rp_object = RewardPoint.objects.get(user=request.user)
+        current_points = rp_object.reward_points
+    context = {
+        'reward_points': current_points,
+    }
+    return render(request, 'accounts/rewards.html', context)

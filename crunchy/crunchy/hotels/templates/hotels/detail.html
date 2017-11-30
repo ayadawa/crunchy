@@ -1,0 +1,126 @@
+{% extends 'crunchy/base.html' %}
+{% block title %}Hotels{% endblock %}
+
+{% block content %}
+    <div class="container">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+
+        <!-- Begin first column. -->
+        <div class="col-md-6">
+            {% for image in hotel.images_as_list %}
+                <a href="#" class="thumbnail">
+                    <img class="media-object" src="{{ image }}" alt="hotel image">
+                </a>
+            {% endfor %}
+
+            <hr>
+
+            <h1>{{ hotel.name }}</h1>
+
+            <h3>Description</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                It has survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of
+                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
+                software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+            <hr>
+
+            <h3>99 Reviews</h3><hr>
+
+            <!-- Begin first comment. -->
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object"
+                             src="http://s3.amazonaws.com/cdn.roosterteeth.com/default/md/user_profile_male.jpg"
+                             alt=""
+                             style="width:50px;height:50px;">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Fake User</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book</p>
+                </div>
+            </div><!-- end first comment. -->
+
+            <hr>
+
+            <!-- Begin second comment. -->
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object"
+                             src="http://s3.amazonaws.com/cdn.roosterteeth.com/default/md/user_profile_male.jpg"
+                             alt=""
+                             style="width:50px;height:50px;">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Fake User</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book</p>
+                </div>
+            </div><!-- end second comment. -->
+
+            <hr>
+
+        </div><!-- End first column. -->
+
+        <!-- Begin second column. -->
+        <div class="col-md-4">
+            <iframe
+              width="100%"
+              height="250"
+              frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB_1H2SfrFsQ5gWMbV1q-V-uVuNV_OkbQQ
+                &q=Space+Needle,Seattle+WA" allowfullscreen>
+            </iframe>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form" action="{% url 'bookings:create' hotel.id %}" method="POST">
+                        {% csrf_token %}
+                        <h3>${{ hotel.price }}<small> per night</small></h3>
+                        <ul class="static_ratings">
+
+                            {% for i in range %}
+                                {% if i <= hotel_rating %}
+                                    <li class="active" id="rat_{{ i }}"><label for="rating_{{ i }}" class="glyphicon glyphicon-star" aria-hidden="true"></label>
+                                        <input type="radio" name="rating" id="rating_{{ i }}" value="{{ i }}"/>
+                                    </li>
+                                {% else %}
+                                    <li id="rat_{{ i }}"><label for="rating_{{ i }}" class="glyphicon glyphicon-star" aria-hidden="true"></label>
+                                        <input type="radio" name="rating" id="rating_{{ i }}" value="{{ i }}"/>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                        <hr>
+                        {{ form.as_p }}
+                        <br>
+                        <button type="submit" class="center-block btn btn-danger" style="width:100%;height:50px;font-size:20px;">Request to Book</button>
+                    </form>
+                </div>
+            </div>
+
+            {% load staticfiles %}
+            <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
+        </div><!-- End second column. -->
+
+    </div>
+    </div>
+{% endblock %}
