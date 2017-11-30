@@ -1,8 +1,14 @@
 {% extends 'crunchy/base.html' %}
+{% block title %}Hotels{% endblock %}
 
-{% block title %}Detail Page For Reservation{% endblock %}
+{% block styles %}
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
+    <script type="text/javascript" src="{% static 'hotels/styles.js' %}" ></script>
+{% endblock %}
 
 {% block content %}
+
     {% if messages %}
 
 
@@ -36,60 +42,27 @@
         </style>
     {% endif %}
 
-    <div class="panel panel-default">
-         <div class="panel-body">
-            <div class="row">
-                <!-- Begin first column. -->
-                <div class="col-md-4">
-
-                    {% for image in hotel.images_as_list %}
-                        <a href="#" class="thumbnail">
-                            <img class="media-object" src="{{ image }}" alt="hotel image">
-                        </a>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <!-- Begin first column. -->
+        <div class="col-md-6">
+            <div class="main-container">
+                <div class="main-display">
+{#                    <a href="#" class="thumbnail">#}
+                        <img id="currentImg" src="{{ hotel.images_as_list.0 }}" />
+{#                    </a>#}
+               </div>
+               <div class="bottom-nav-display">
+                   {% for image in hotel.images_as_list %}
+                        <img src="{{ image }}" onclick="showImage('{{ image }}');" />
                     {% endfor %}
-                </div><!-- End first column. -->
-
-                <!-- Begin second column. -->
-
-                <div class="col-md-7">
-                    <h3 class="media-heading">{{ hotel.name }}</h3>
-                    Description of the hotel will go here...
-                    <p>{{ hotel.city }}</p>
-                    <h4 class="pull-right">${{ hotel.price }}</h4>
-
-                <div class = container>
-                    <h1>Hotel reserved from: </h1>
-                    <h1>{{ booking.check_in_date }}</h1>
-                    <h1>{{ booking.check_out_date }}</h1>
-
-                </div>
-
-{#                        {% if messages %}#}
-{#                    <ul class="messages">#}
-{#                        {% for message in messages %}#}
-{#                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
-{#                        {% endfor %}#}
-{#                    </ul>#}
-{#                    {% endif %}#}
+               </div>
+            </div>
 
 
-
-                    <form class="form-horizontal" role="form" action="delete/" method="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-danger">Cancel Reservation</button>
-                            <br>
-                                <div class="form-group">
-                            <div class="col-sm-offset-0 col-sm-4">
-                                <br>
-                                <button type="submit" class="center-block btn btn-danger" style="width:80%;height:35px;font-size:15px;">Update Booking</button>
-                            </div>
-                        </div>
-                                    </div>
-                        </div>
-                    </form>
-  <hr>
+            <hr>
 
             <h1>{{ hotel.name }}</h1>
 
@@ -103,9 +76,109 @@
                 software like Aldus PageMaker including versions of Lorem Ipsum.</p>
 
             <hr>
-                </div><!-- End second column. -->
 
+            <h3>99 Reviews</h3><hr>
+
+            <!-- Begin first comment. -->
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object"
+                             src="http://s3.amazonaws.com/cdn.roosterteeth.com/default/md/user_profile_male.jpg"
+                             alt=""
+                             style="width:50px;height:50px;">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Fake User</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book</p>
+                </div>
+            </div><!-- end first comment. -->
+
+            <hr>
+
+            <!-- Begin second comment. -->
+            <div class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object"
+                             src="http://s3.amazonaws.com/cdn.roosterteeth.com/default/md/user_profile_male.jpg"
+                             alt=""
+                             style="width:50px;height:50px;">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Fake User</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                        when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book</p>
+                </div>
+            </div><!-- end second comment. -->
+
+            <hr>
+
+        </div><!-- End first column. -->
+
+        <!-- Begin second column. -->
+        <div class="col-md-4">
+
+            <div class="col-md-7">
+                    <h3 class="media-heading">{{ hotel.name }}</h3>
+
+                    <p>{{ hotel.city }}</p>
+                    <h4> ${{ hotel.price }}</h4>
+
+{#                <div class = container>#}
+                    <h4>Hotel reserved from: </h4>
+                    <h4>{{ booking.check_in_date }}</h4>
+                    <h4>{{ booking.check_out_date }}</h4>
+                <form class="form-horizontal" role="form" action="delete/" method="POST" enctype="multipart/form-data">
+
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10" style="margin-left: -5px;">
+                                <br>
+                                <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+                            <br>
+                                <br>
+                                <div class="form-group">
+                            <div class="col-sm-offset-0 col-sm-4">
+
+                                <button type="submit" class="center-block btn btn-primary" style="width:540%;height:34px;font-size:15px;">Update Booking</button>
+
+                            </div>
+                        </div>
+                                    </div>
+                        </div>
+                    </form>
+
+                    </form>
+{#                </div>#}
+
+
+{#                        {% if messages %}#}
+{#                    <ul class="messages">#}
+{#                        {% for message in messages %}#}
+{#                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+{#                    {% endif %}#}
+
+
+
+
+
+                </div>
             </div>
-         </div>
+
+{#            {% load staticfiles %}#}
+{#            <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">#}
+        </div><!-- End second column. -->
+
+    </div>
     </div>
 {% endblock %}

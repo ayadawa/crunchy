@@ -1,16 +1,13 @@
 {% extends 'crunchy/base.html' %}
 {% block title %}Hotels{% endblock %}
 
-{% block styles %}
+{% block content %}
+
     {% load staticfiles %}
     <link rel="stylesheet" href="{% static 'hotels/styles.css' %}">
     <script type="text/javascript" src="{% static 'hotels/styles.js' %}" ></script>
-{% endblock %}
-
-{% block content %}
 
     {% if messages %}
-
 
         <ul class="messages">
             {% for message in messages %}
@@ -63,6 +60,7 @@
             <hr>
 
             <h1>{{ hotel.name }}</h1>
+            <h1>{{ hotel.city }}</h1>
 
 
             <h3>Description</h3>

@@ -7,6 +7,12 @@
     padding: 200px;
 }
 
+.big-logo{
+    font-family: 'Chewy', cursive;
+    font-size: 70px;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+
 .bg-1 {
     padding: 60px;
 }
