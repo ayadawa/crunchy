@@ -6,4 +6,4 @@ class SearchHotelForm(ModelForm):
 
     class Meta:
         model = Hotel
-        fields = ['rating']
+        fields = ['rating', 'city', 'price']
