@@ -10,64 +10,64 @@
 
 {% block content %}
 
-  <div class="row">
-    <!-- Begin first column. -->
-    <div class="col-md-3 ">
-      <div class="container">
-          <br></br>
-      {% include 'hotels/search_form.html' %}
-      </div>
-    </div><!-- End first column. -->
+    <div class="container-fluid">
+     <div class="row">
+        <!-- Begin first column. -->
+        <div class="col-md-3 ">
+            <div class="container-fluid">
+                {% include 'hotels/search_form.html' %}
+            </div>
+        </div><!-- End first column. -->
 
-  <div class="col-md-9">
+        <div class="col-md-9">
 
-    {% for hotel in hotels %}
-   <div class="hotel-cards" style="top: 20px; right:40px; margin-top:35px;">
-    <div class="col-lg-4 col-sm-6 col-xs-12 card" style="margin: 8px;";>
-        <div class="col-md-12">
-            <a href="{% url 'hotels:detail' hotel.id %}">
-            <img class="media-object" src="{{ hotel.images_as_list.0 }}" alt="hotel image" align="center" width="250" height="200";>
-             </a>
+            {% for hotel in hotels %}
+                <div class="hotel-cards" style="top: 20px; right:40px; margin-top:35px;">
+                    <div class="col-lg-4 col-sm-6 col-xs-12 card" style="margin: 8px;";>
+                        <div class="col-md-12">
+                            <a href="{% url 'hotels:detail' hotel.id %}">
+                                <img class="media-object" src="{{ hotel.images_as_list.0 }}" alt="hotel image" align="center" width="250" height="200";>
+                            </a>
+                        </div>
+                        <h4 class="media-heading">{{ hotel.name }}</h4>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+
+
+            <div class="row">
+                <div class = "col-md-10 " style="top: 30px;">
+
+                    <ul class="pagination">
+                        {% if hotels.has_previous %}
+                            <li><a href="?page={{ hotels.previous_page_number }}">&laquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in hotels.paginator.page_range %}
+                            {% if hotels.number == i %}
+                                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if hotels.has_next %}
+                            <li><a href="?page={{ hotels.next_page_number }}">&raquo;</a></li>
+                        {% else %}
+                            <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+
+                </div>
+            </div>
+
+
+
         </div>
-        <h4 class="media-heading">{{ hotel.name }}</h4>
-        
-  </div>
-       </div>
-
-  {% endfor %}
-
-
-  <div class="row">
-      <div class = "col-sm-6" style="top: 30px; left:120px;">
-
-            <ul class="pagination">
-              {% if hotels.has_previous %}
-                <li><a href="?page={{ hotels.previous_page_number }}">&laquo;</a></li>
-              {% else %}
-                <li class="disabled"><span>&laquo;</span></li>
-              {% endif %}
-              {% for i in hotels.paginator.page_range %}
-                {% if hotels.number == i %}
-                  <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                {% else %}
-                  <li><a href="?page={{ i }}">{{ i }}</a></li>
-                {% endif %}
-              {% endfor %}
-              {% if hotels.has_next %}
-                <li><a href="?page={{ hotels.next_page_number }}">&raquo;</a></li>
-              {% else %}
-                <li class="disabled"><span>&raquo;</span></li>
-              {% endif %}
-            </ul>
-
-      </div>
-  </div>
-
-
-
-
-  </div>
-      </div>
+    </div>
+    </div>
 
 
 
