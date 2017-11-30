@@ -2,28 +2,89 @@
 {% block title %}Hotel App {% endblock %}
 
 {% block content %}
+    <style>
+        div.relative {
+            position: center;
+
+            right: 10px;
+
+            border: 3px solid #000000;
+        }
+
+        div.relative {
+            position: center;
+
+            border: 3px solid #000000;
+        }
+
+        div button
+        {
+            margin: auto;
+
+            margin-top: -7em;
+
+            margin-right: 1em;
+            margin-left: 1em;
+
+        }
+
+        .wrapper {
+            padding: 10px 20px 10px 30px;
+        }
+
+        #button-padding {
+            padding-top: 69px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+    </style>
+
 
     <div class="text-center">
-        <ul class="nav nav-pills nav-stacked ">
-            <li class="active"><a href="#">View Upcoming/Previous Reservations Here</a></li>
-            <li><a href="{% url 'viewer:previous' %}">Previous Reservations</a></li>
-            <li><a href="{% url 'viewer:upcoming' %}">Upcoming Reservations</a></li>
-            <div class="content container">
-                <div class="row">
-                    <style>
-                        div.relative {
-                            position: center;
 
-                            border: 3px solid #769db7;
-                        }
-                    </style>
-                    <div class="relative">
-                        <b>   No Previous Reservations Have Been Made </b>
+        {% for booking in bookings %}
+            <div class="content container">
+                <div class="relative">
+                    <div class="row">
+
+                        <div class="col-sm-4 wrapper">
+                            {% for image in booking.hotel.images_as_list %}
+                                <a href="#" class="thumbnail">
+                                    <img class="media-object" src="{{ image}}" alt="hotel image" align="center" width="250" height="200";>
+                                </a>
+
+
+                            {% endfor %}
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="wrapper">
+                                <b>
+                                    Reservation {{ booking.id }} </br>
+                                    Username: {{ user.username }} </br>
+                                    Hotel Name: {{ hotel.name }} </br>
+                                    Start Date: {{ booking.check_in_date }} - End Date: {{ booking.check_out_date }} </br>
+                                </b>
+                            </div>
+
+                            <div id="button-padding">
+                                <a href="/bookings/{{ booking.id }}"><button type="button" class="btn btn-success" value="More Details">More Details</button></a>
+                                <a href="delete/{{ booking.id }}"><button type="button" class="btn btn-danger" value="Cancel Reservation">Cancel Reservation</button></a>
+                            </div>
+
+                        </div>
+
+                        </tr>
                     </div>
                 </div>
             </div>
-
+        {% endfor %}
         </ul>
+
     </div>
 
 
