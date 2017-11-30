@@ -1,5 +1,6 @@
 import sys, os, django
 
+
 sys.path.append("E:/CMPE165/crunchy/crunchy") #here store is root folder(means parent).
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "crunchy.settings")

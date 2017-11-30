@@ -130,14 +130,34 @@
                     <h3 class="media-heading">{{ hotel.name }}</h3>
 
                     <p>{{ hotel.city }}</p>
-                    <h4> {{ hotel.price }}</h4>
+                    <h4> ${{ hotel.price }}</h4>
 
-                <div class = container>
-                    <h1>Hotel reserved from: </h1>
-                    <h1>{{ booking.check_in_date }}</h1>
-                    <h1>{{ booking.check_out_date }}</h1>
+{#                <div class = container>#}
+                    <h4>Hotel reserved from: </h4>
+                    <h4>{{ booking.check_in_date }}</h4>
+                    <h4>{{ booking.check_out_date }}</h4>
+                <form class="form-horizontal" role="form" action="delete/" method="POST" enctype="multipart/form-data">
 
-                </div>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10" style="margin-left: -5px;">
+                                <br>
+                                <button type="submit" class="btn btn-danger">Cancel Reservation</button>
+                            <br>
+                                <br>
+                                <div class="form-group">
+                            <div class="col-sm-offset-0 col-sm-4">
+
+                                <button type="submit" class="center-block btn btn-primary" style="width:540%;height:34px;font-size:15px;">Update Booking</button>
+
+                            </div>
+                        </div>
+                                    </div>
+                        </div>
+                    </form>
+
+                    </form>
+{#                </div>#}
 
 
 {#                        {% if messages %}#}
@@ -151,26 +171,7 @@
 
 
 
-            <form class="form-horizontal" role="form" action="delete/" method="POST" enctype="multipart/form-data">
 
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-danger">Cancel Reservation</button>
-                            <br>
-                                <div class="form-group">
-                            <div class="col-sm-offset-0 col-sm-4">
-                                <br>
-
-                                <button type="submit" class="center-block btn btn-danger" style="width:540%;height:34px;font-size:15px;">Update Booking</button>
-
-                            </div>
-                        </div>
-                                    </div>
-                        </div>
-                    </form>
-
-                    </form>
                 </div>
             </div>
 

@@ -10,6 +10,18 @@
 </script>
 
 
+      <div class="well" style="width:300px; background-color:light-grey; color:black;">
+      <h3 align="center"> Filters </h3>
+        <form class="form-horizontal" role="form" action="{% url 'hotels:search' %}" method="GET" enctype="multipart/form-data">
+            {% csrf_token %}
+          <div class="form-group">
+            <label for="location1" class="control-label">Location</label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="location1" size="40">
+            </div>
+          </div>
+
+
 <div class="well" style="width:300px;">
 <h3 align="center">Search Filter</h3>
 <form class="form-horizontal" role="form" action="{% url 'hotels:search' %}" method="GET" enctype="multipart/form-data">
