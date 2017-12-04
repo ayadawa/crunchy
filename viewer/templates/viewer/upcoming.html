@@ -76,7 +76,8 @@
 
                                 <div id="button-padding">
                                     <a href="/bookings/{{ booking.id }}"><button type="button" class="btn btn-success" value="More Details">More Details</button></a>
-                                <a href="delete/{{ booking.id }}"><button type="button" class="btn btn-danger" value="Cancel Reservation">Cancel Reservation</button></a>
+                                    <a href="delete/{{ booking.id }}"><button type="button" onclick="alert('Alert! Canceling a reservation results in a $50 fee')" class="btn btn-danger" value="Cancel Reservation">Cancel Reservation</button></a>
+
                                 </div>
 
                             </div>
