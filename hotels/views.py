@@ -10,7 +10,7 @@ from . import placeid
 def index(request):
     hotels_list = Hotel.objects.all()
     form = SearchHotelForm()
-    paginator = Paginator(hotels_list, 15)  # Show 25 contacts per page
+    paginator = Paginator(hotels_list, 52)  # Show 52 hotels per page
 
     page = request.GET.get('page')
     try:

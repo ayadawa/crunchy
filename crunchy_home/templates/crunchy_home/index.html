@@ -8,11 +8,11 @@
    <link rel = "stylesheet" type = "text/css" href = "{% static 'crunchy_home/style.css' %}" />
     <script src = "{% static 'crunchy_home/home.js' %}"></script>
     <body>
-        <div class = "jumbotron text-center">
-            <h1>Crunchy</h1>
+        <div class = "jumbotron text-center" style="color:white; font-family: 'Barlow Semi Condensed', sans-serif; ">
+            <h1>Find your ideal hotel for the best price</h1>
             <form class="form-inline">
                 <div class="input-group">
-                    <input type="search" class="form-control" size="50" placeholder="Find Hotel" required>
+                    <input type="search" class="form-control" size="50" placeholder="e.g. San Francisco" required>
                 <div class="input-group-btn">
                     <a class="btn btn-primary" href="{% url 'hotels:search' %}">Search</a>
                 </div>
