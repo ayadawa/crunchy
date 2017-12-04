@@ -53,31 +53,35 @@
                     <div class="row">
 
                         <div class="col-sm-4 wrapper">
-                            {% for image in booking.hotel.images_as_list %}
+                          
                                 <a href="#" class="thumbnail">
-                                    <img class="media-object" src="{{ image}}" alt="hotel image" align="center" width="250" height="200";>
+                                    <img class="media-object" src="{{ booking.hotel.images_as_list.0}}" alt="hotel image" align="center" width="250" height="200";>
                                 </a>
 
 
-                            {% endfor %}
                         </div>
                         <div class="col-sm-6">
                             <div class="wrapper">
-                                <b>
-                                    Reservation {{ booking.id }} </br>
-                                    Username: {{ user.username }} </br>
-                                    Hotel Name: {{ hotel.name }} </br>
-                                    Start Date: {{ booking.check_in_date }} - End Date: {{ booking.check_out_date }} </br>
-                                </b>
-                            </div>
 
+
+                                    <div class="description">
+                                         <h1>Reservation {{ booking.id }}</h1>
+                                         <h2>Hotel Name: {{ booking.hotel.name }}</h2>
+                                         <p class="summary">Start Date: {{ booking.check_in_date }} - End Date: {{ booking.check_out_date }}</p>
+
+                                    </div>
+
+                                
+                            </div>
+                        </div>
+                     <div class="col-sm-2">
                             <div id="button-padding">
                                 <a href="/bookings/{{ booking.id }}"><button type="button" class="btn btn-success" value="More Details">More Details</button></a>
-                                <a href="delete/{{ booking.id }}"><button type="button" class="btn btn-danger" value="Cancel Reservation">Cancel Reservation</button></a>
+                               
                             </div>
-
                         </div>
 
+                  
                         </tr>
                     </div>
                 </div>

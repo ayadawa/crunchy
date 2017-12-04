@@ -56,20 +56,22 @@
                     <div class="row">
 
                             <div class="col-sm-4 wrapper">
-                                {% for image in booking.hotel.images_as_list %}
+                                
                                     <a href="#" class="thumbnail">
-                                        <img class="media-object" src="{{ image }}" alt="currentImg" align="center" width="250" height="200">
+                                        <img class="media-object" src="{{ booking.hotel.images_as_list.0 }}" alt="currentImg" align="center" width="250" height="200">
                                     </a>
-                                {% endfor %}
+                          
                             </div>
                             <div class="col-sm-6">
                                 <div class="wrapper">
-                                <b>
-                                    Reservation {{ booking.id }} </br>
-                                    Username: {{ user.username }} </br>
-                                    Hotel Name: {{ hotel.name }} </br>
-                                    Start Date: {{ booking.check_in_date }} - End Date: {{ booking.check_out_date }} </br>
-                                </b>
+                                     
+                                      <div class="description">
+                                         <h1>Reservation {{ booking.id }}</h1>
+                                         <h2>Hotel Name: {{ booking.hotel.name }}</h2>
+                                         <p class="summary">Start Date: {{ booking.check_in_date }} - End Date: {{ booking.check_out_date }}</p>
+
+                                    </div>
+
                                 </div>
 
                                 <div id="button-padding">

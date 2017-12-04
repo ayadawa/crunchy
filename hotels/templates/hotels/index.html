@@ -28,8 +28,12 @@
                                 <img class="media-object" src="{{ hotel.images_as_list.0 }}" alt="hotel image" align="center" width="250" height="200";>
                             </a>
                         </div>
-                        <h4 class="media-heading" style="text-align:center;">{{ hotel.name }}</h4>
-
+                        <h4 class="media-heading" style="text-align:center; font-family:'Barlow Semi Condensed', sans-serif;">{{ hotel.name }}</h4>
+                            <p style="text-align:left;font-family:'Barlow Semi Condensed', sans-serif; ">
+                                    {{ hotel.city }}
+                            <span style="float:right;">$ {{ hotel.price }}</span>
+                            </p>
+                   
                     </div>
                 </div>
 
@@ -37,7 +41,7 @@
 
 
             <div class="row">
-                <div class = "col-md-10 " style="top: 30px;">
+                <div class = "col-md-10 " style="top: 30px; text-align: center;">
 
                     <ul class="pagination">
                         {% if hotels.has_previous %}

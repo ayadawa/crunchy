@@ -16,7 +16,7 @@ def previous(request):
     booking = Booking.objects.filter(user_id=user.id)
 
     today_min = datetime.datetime.combine(datetime.date(2017, 1, 1), datetime.time.min)
-    today_max = datetime.datetime.combine(datetime.date(2017, 11, 27), datetime.time.max)
+    today_max = datetime.datetime.combine(datetime.date(2017, 12, 3), datetime.time.max)
     bookings = Booking.objects.filter(check_in_date__range=(today_min, today_max))
 
     context = {
@@ -32,8 +32,8 @@ def upcoming(request):
     booking = Booking.objects.filter(user_id=user.id)
 
 
-    today_min = datetime.datetime.combine(datetime.date(2017, 11, 28), datetime.time.min)
-    today_max = datetime.datetime.combine(datetime.date(2017, 12, 30), datetime.time.max)
+    today_min = datetime.datetime.combine(datetime.date(2017, 12, 4), datetime.time.min)
+    today_max = datetime.datetime.combine(datetime.date(2018, 12, 30), datetime.time.max)
     bookings = Booking.objects.filter(check_in_date__range=(today_min, today_max))
 
     context = {
