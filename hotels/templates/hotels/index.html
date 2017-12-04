@@ -1,4 +1,3 @@
-
 {% extends 'crunchy/base.html' %}
 {% block title %}Hotels{% endblock %}
 
@@ -24,12 +23,12 @@
             {% for hotel in hotels %}
                 <div class="hotel-cards" style="top: 20px; right:40px; margin-top:35px;">
                     <div class="col-lg-4 col-sm-6 col-xs-12 card" style="margin: 8px;";>
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="padding-top: 20px;">
                             <a href="{% url 'hotels:detail' hotel.id %}">
                                 <img class="media-object" src="{{ hotel.images_as_list.0 }}" alt="hotel image" align="center" width="250" height="200";>
                             </a>
                         </div>
-                        <h4 class="media-heading">{{ hotel.name }}</h4>
+                        <h4 class="media-heading" style="text-align:center;">{{ hotel.name }}</h4>
 
                     </div>
                 </div>
@@ -62,9 +61,6 @@
 
                 </div>
             </div>
-
-
-
         </div>
     </div>
     </div>
@@ -73,4 +69,3 @@
 
 
 {% endblock %}
-
