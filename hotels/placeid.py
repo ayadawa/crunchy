@@ -5,8 +5,8 @@ def get_hotel_id(hotel_id):
     hotel = Hotel.objects.get(pk=hotel_id)
     address = hotel.address
     address = address.replace(" ","+").strip()
-    SEARCH_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query={}&key=AIzaSyDLF1HytJluUKWh4iMzPSqosF1UCvdOB38".format(address)
-    #print(SEARCH_URL)
+    SEARCH_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query={}&key=AIzaSyDq3jFlEM3Rch8_dIcEbv8_zfwrtfFwK3c".format(address)
+    print(SEARCH_URL)
     json_data = requests.get(SEARCH_URL).json()
     result_list = json_data["results"]
 

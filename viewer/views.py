@@ -4,6 +4,9 @@ from django.core.urlresolvers import reverse
 
 from bookings.models import Booking
 from datetime import datetime
+from hotels.models import Hotel
+from bookings.models import RewardPoint
+from django.contrib import messages
 import datetime
 
 # from ..bookings.models import Booking
@@ -45,6 +48,17 @@ def upcoming(request):
 
 def delete(request, booking_id):
     print('booking id: ' + booking_id)
+    booking = Booking.objects.get(pk=booking_id)
     # if request.method == "POST":
     Booking.objects.get(id=booking_id).delete()
+    hotel = Hotel.objects.get(pk=booking.hotel_id)
+    delete_points = float(hotel.price) * .10
+
+    rp_object = RewardPoint.objects.get(user=request.user)
+    current_points = rp_object.reward_points
+    total_points = int(current_points - delete_points)
+
+    rp_object.reward_points = total_points
+    rp_object.save()
+
     return redirect('/viewer/upcoming')

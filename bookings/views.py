@@ -73,5 +73,18 @@ def delete(request, booking_id):
         booking = Booking.objects.get(pk=booking_id)
         Booking.objects.filter(id=booking_id).delete()
         url_path = '/hotels/%s' % booking.hotel_id
+
+        #delete reward points
+        hotel = Hotel.objects.get(pk=booking.hotel_id)
+        delete_points = float(hotel.price) * .10
+
+        rp_object = RewardPoint.objects.get(user=request.user)
+        current_points = rp_object.reward_points
+        total_points = int(current_points - delete_points)
+
+        rp_object.reward_points = total_points
+        rp_object.save()
+
+        messages.info(request, str(int(delete_points+1)) + ' Reward Points Lost! ')
         return redirect(url_path)
 
